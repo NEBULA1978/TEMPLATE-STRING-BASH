@@ -16,10 +16,10 @@
 
 <form id="formulario">
     <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+    <input type="text" id="nombre" placeholder="Escribe tu nombre" required>
 
     <label for="apellidos">Apellidos:</label>
-    <input type="text" id="apellidos" placeholder="Escribe tus apellidos">
+    <input type="text" id="apellidos" placeholder="Escribe tus apellidos" required>
 
     <button id="mostrarDatos">Mostrar Datos</button>
 </form>
@@ -41,18 +41,22 @@
         var nombre = nombreInput.value;
         var apellidos = apellidosInput.value;
 
-        var texto = `
-          <h1>Hola que tal</h1>
-          <h3>Mi nombre es: ${nombre}</h3>
-          <h3>Mis apellidos son: ${apellidos}</h3>
-        `;
+        if (nombre && apellidos) { // Comprobar si se ingresaron datos
+            var texto = `
+              <h1>Hola que tal</h1>
+              <h3>Mi nombre es: ${nombre}</h3>
+              <h3>Mis apellidos son: ${apellidos}</h3>
+            `;
 
-        // Mostrar datos debajo de los campos de entrada
-        datosMostradosDiv.innerHTML = texto;
+            // Mostrar datos debajo de los campos de entrada
+            datosMostradosDiv.innerHTML = texto;
 
-        // Limpiar los campos de entrada
-        nombreInput.value = "";
-        apellidosInput.value = "";
+            // Limpiar los campos de entrada
+            nombreInput.value = "";
+            apellidosInput.value = "";
+        } else {
+            datosMostradosDiv.innerHTML = "Por favor, introduce tanto el nombre como los apellidos obligatoriamente.";
+        }
     });
 </script>
 </body>
