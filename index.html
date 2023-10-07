@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
-  <body>
+</head>
+<body>
 
-    <div id="micaja">¡Hola soy una caja!</div>
+<div id="micaja">¡Hola soy una caja!</div>
 
-    <section id="miseccion">
-      <h1 id="encabezado">Listado de textos de los divs</h1>
-    </section>
+<section id="miseccion">
+    <h1 id="encabezado">Listado de textos de los divs</h1>
+</section>
 
-    <form id="formulario">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" placeholder="Escribe tu nombre">
+<form id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre">
 
-      <label for="apellidos">Apellidos:</label>
-      <input type="text" id="apellidos" placeholder="Escribe tus apellidos">
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" placeholder="Escribe tus apellidos">
 
-      <button id="mostrarDatos">Mostrar Datos</button>
-    </form>
+    <button id="mostrarDatos">Mostrar Datos</button>
+</form>
 
-    <script>
-      'use strict'
+<div id="datosMostrados"></div>
 
-      // Obtener elementos del DOM
-      var nombreInput = document.getElementById("nombre");
-      var apellidosInput = document.getElementById("apellidos");
-      var mostrarDatosBtn = document.getElementById("mostrarDatos");
+<script>
+    'use strict'
 
-      var caja = document.querySelector("#micaja");
-      var seccion = document.querySelector("#miseccion");
-      var id = document.querySelector("#encabezado");
+    // Obtener elementos del DOM
+    var nombreInput = document.getElementById("nombre");
+    var apellidosInput = document.getElementById("apellidos");
+    var mostrarDatosBtn = document.getElementById("mostrarDatos");
+    var datosMostradosDiv = document.getElementById("datosMostrados");
 
-      // Agregar un manejador de eventos para el botón
-      mostrarDatosBtn.addEventListener("click", function() {
+    mostrarDatosBtn.addEventListener("click", function (event) {
+        event.preventDefault(); // Evitar la recarga de la página
+
         var nombre = nombreInput.value;
         var apellidos = apellidosInput.value;
 
@@ -47,17 +47,13 @@
           <h3>Mis apellidos son: ${apellidos}</h3>
         `;
 
-        caja.innerHTML = "¡TEXTO EN LA CAJA DESDE JS!";
-        caja.style.background = "red";
-        caja.style.padding = "20px";
-        caja.style.color = "white";
-        caja.className = "hola hola2";
+        // Mostrar datos debajo de los campos de entrada
+        datosMostradosDiv.innerHTML = texto;
 
-        id.innerHTML = "Listado de textos de los divs";
-
-        seccion.appendChild(id);
-        seccion.appendChild(caja);
-      });
-    </script>
-  </body>
+        // Limpiar los campos de entrada
+        nombreInput.value = "";
+        apellidosInput.value = "";
+    });
+</script>
+</body>
 </html>
