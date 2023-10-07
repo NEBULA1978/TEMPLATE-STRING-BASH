@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -15,50 +14,50 @@
       <h1 id="encabezado">Listado de textos de los divs</h1>
     </section>
 
-    <!-- <script src="index.js" charset="utf-8"></script> -->
+    <form id="formulario">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" placeholder="Escribe tu nombre">
+
+      <label for="apellidos">Apellidos:</label>
+      <input type="text" id="apellidos" placeholder="Escribe tus apellidos">
+
+      <button id="mostrarDatos">Mostrar Datos</button>
+    </form>
+
     <script>
-    'use strict'
+      'use strict'
 
-// Plantillas de texto
+      // Obtener elementos del DOM
+      var nombreInput = document.getElementById("nombre");
+      var apellidosInput = document.getElementById("apellidos");
+      var mostrarDatosBtn = document.getElementById("mostrarDatos");
 
-var nombre = prompt("METE TU NOMBRE");
-var apellidos = prompt("METE TUS APELLIDOS");
+      var caja = document.querySelector("#micaja");
+      var seccion = document.querySelector("#miseccion");
+      var id = document.querySelector("#encabezado");
 
-// var texto = " Mi nombre es: "+nombre+" <br/> Mis apellidos son: "+apellidos;
-var texto = `
-	<h1>Hola que tal</h1>
-	<h3>Mi nombre es: ${nombre}</h3>
-	<h3>Mis apellidos son: ${apellidos}</h3>
-`;
+      // Agregar un manejador de eventos para el botón
+      mostrarDatosBtn.addEventListener("click", function() {
+        var nombre = nombreInput.value;
+        var apellidos = apellidosInput.value;
 
-document.write(texto);
+        var texto = `
+          <h1>Hola que tal</h1>
+          <h3>Mi nombre es: ${nombre}</h3>
+          <h3>Mis apellidos son: ${apellidos}</h3>
+        `;
 
-  </script>
-    <!-- <script src="index2.js" charset="utf-8"></script> -->
-    <script>
-    // Conseguir elementos con un ID concreto
+        caja.innerHTML = "¡TEXTO EN LA CAJA DESDE JS!";
+        caja.style.background = "red";
+        caja.style.padding = "20px";
+        caja.style.color = "white";
+        caja.className = "hola hola2";
 
-// var caja = document.getElementById("micaja");
-var caja = document.querySelector("#micaja");
+        id.innerHTML = "Listado de textos de los divs";
 
-caja.innerHTML = "¡TEXTO EN LA CAJA DESDE JS!";
-caja.style.background = "red";
-caja.style.padding = "20px";
-caja.style.color = "white";
-caja.className = "hola hola2";
-
-
-// Conseguir elementos por su etiqueta
-var todosLosDivs = document.getElementsByTagName('div');
-
-var seccion = document.querySelector("#miseccion");
-var hr = document.createElement("hr");
-
-
-// Query selector
-var id = document.querySelector("#encabezado");
-console.log(id);
-
-  </script>
+        seccion.appendChild(id);
+        seccion.appendChild(caja);
+      });
+    </script>
   </body>
 </html>
